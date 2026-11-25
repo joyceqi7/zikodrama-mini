@@ -1,0 +1,84 @@
+/* 首页沿用参考图的深色影院背景、衬线剧名和独立内容区域；不重绘 TikTok 原生胶囊。 */
+.app-shell.square-page { overflow: clip; color: #f5f5f5; background: #0b0b0b; font-family: "Times New Roman", Times, serif; }
+.square-page .bottom-nav.account-bottom-nav { height: calc(66px + var(--minis-bottom, env(safe-area-inset-bottom))); }
+.square-page .square-header { position: sticky; top: 0; z-index: 10; padding-top: max(0px, calc(var(--minis-top, env(safe-area-inset-top)) - 44px)); background: #000; }
+.square-page .home-page-brand { display: grid; place-items: center; margin: 0; height: 44px; padding: 0 70px; overflow: hidden; font-family: Arial, Helvetica, sans-serif; font-size: 18px; line-height: 24px; text-align: center; }
+.square-page .square-content { padding: 14px 16px 32px; }
+.square-page .square-content h2 { margin: 20px 0 12px; font-size: 18px; line-height: 1.2; }
+.home-carousel { overflow: hidden; margin: 0 -16px; }
+/* 中央封面占视口约六成；由现有 Swiper 处理手势与循环，不复制播放入口。 */
+.home-carousel-rail { width: 58%; overflow: visible; }
+.home-carousel-rail .swiper-wrapper { align-items: center; }
+.home-hero-card { position: relative; display: block; aspect-ratio: 3 / 4; overflow: hidden; border-radius: 14px; background: #191919; color: #fff; }
+.home-hero-card > img, .home-hero-card > .media-image-placeholder { display: block; width: 100%; height: 100%; object-fit: cover; }
+.home-hero-card::after { position: absolute; content: ""; inset: 45% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.85)); pointer-events: none; }
+.home-carousel-rail .swiper-slide:not(.swiper-slide-active) .home-hero-card::after { inset: 0; background: rgba(0,0,0,.4); }
+.home-carousel-rail .swiper-slide:not(.swiper-slide-active) .home-highlight-copy { visibility: hidden; }
+.home-highlight-copy { display: block; }
+.home-hero-card .home-highlight-copy { position: absolute; z-index: 1; right: 14px; bottom: 14px; left: 14px; display: grid; justify-items: center; gap: 24px; text-align: left; }
+.home-hero-card strong { display: -webkit-box; width: 100%; overflow: hidden; -webkit-box-orient: vertical; -webkit-line-clamp: 2; font-size: 16px; line-height: 1.3; text-wrap: balance; }
+.home-play { display: inline-flex; align-items: center; justify-content: center; gap: 8px; min-height: 36px; padding: 0 20px; border-radius: 999px; color: #080808; background: rgba(255,255,255,.9); font-size: 14px; font-weight: 700; }
+.home-carousel-dots { display: flex; justify-content: center; flex-wrap: wrap; gap: 0; padding: 6px 18px 0; }
+.home-carousel-dots button { display: grid; place-items: center; width: 24px; height: 44px; padding: 0; border: 0; background: transparent; cursor: pointer; }
+.home-carousel-dots button[aria-pressed="true"] { width: 26px; }
+.home-carousel-dots button span { display: block; width: 6px; height: 6px; border-radius: 99px; background: #515151; }
+.home-carousel-dots button[aria-pressed="true"] span { width: 19px; background: #fff; }
+.square-page .home-hot h2 { margin-top: 8px; }
+.home-hot-rail { margin-right: -16px; padding: 0 16px 6px 0; }
+.home-hot-rail .swiper-slide { width: 34%; }
+.home-hot-card { display: block; min-width: 0; color: #ddd; }
+.home-hot-card > img, .home-hot-card > .media-image-placeholder { display: block; width: 100%; aspect-ratio: 3 / 4; object-fit: cover; border-radius: 9px; background: #191919; }
+.home-hot-card strong { display: -webkit-box; overflow: hidden; margin-top: 9px; font-size: 14px; font-weight: 400; line-height: 1.4; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.square-page .poster-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px 12px; }
+.square-page .poster-grid .drama-poster { overflow: hidden; min-width: 0; border-radius: 13px; background: #191919; }
+.square-page .poster-grid .cover-frame { aspect-ratio: 3 / 4; border-radius: 0; }
+.square-page .poster-grid .cover-frame img { object-fit: cover; }
+.square-page .poster-grid .card-copy { padding: 11px 10px 14px; }
+.square-page .poster-grid .card-copy strong { display: -webkit-box; min-height: 38px; white-space: normal; font-size: 15px; line-height: 1.3; -webkit-line-clamp: 2; -webkit-box-orient: vertical; }
+.square-page .poster-grid .card-copy small { margin-top: 7px; color: #b3b3b3; }
+/* 每张首页封面在自身下载与解码期间独立显示柔和闪光，完成后由真实图片自然覆盖。 */
+.square-page .media-image-loading { background-color: #1b1b1b; background-image: linear-gradient(100deg, transparent 20%, rgba(255,255,255,.11) 50%, transparent 80%); background-repeat: no-repeat; background-size: 220% 100%; animation: home-image-loading-shimmer 1.35s ease-in-out infinite; }
+@keyframes home-image-loading-shimmer { from { background-position: 120% 0; } to { background-position: -120% 0; } }
+.square-page .home-back-to-top { position: fixed; z-index: 9; right: max(16px, calc((100vw - 430px) / 2 + 16px)); bottom: calc(80px + var(--minis-bottom, env(safe-area-inset-bottom))); display: grid; place-items: center; width: 44px; height: 44px; padding: 0; border: 1px solid rgba(255,255,255,.16); border-radius: 50%; color: #fff; background: rgba(35,35,38,.9); box-shadow: 0 8px 24px rgba(0,0,0,.36); backdrop-filter: blur(12px); cursor: pointer; animation: home-back-to-top-in 160ms ease-out; }
+.square-page .home-back-to-top svg { width: 21px; height: 21px; }
+.square-page .home-back-to-top:active { transform: scale(.94); }
+.square-page.has-vip-entry .home-back-to-top { bottom: calc(148px + var(--minis-bottom, env(safe-area-inset-bottom))); }
+.square-page .home-vip-entry { position: fixed; z-index: 41; right: max(16px, calc((100vw - 430px) / 2 + 16px)); bottom: calc(80px + var(--minis-bottom, env(safe-area-inset-bottom))); display: grid; place-items: center; width: 56px; height: 56px; padding: 0; border: 1px solid rgba(246,215,123,.65); border-radius: 50%; color: #1b1811; background: #f6d77b; box-shadow: 0 8px 24px rgba(0,0,0,.38); cursor: pointer; touch-action: manipulation; -webkit-user-select: none; user-select: none; }
+.square-page .home-vip-entry svg { width: 24px; height: 24px; }
+.square-page .home-vip-entry:focus-visible { outline: 2px solid #fff; outline-offset: 3px; }
+.square-page .home-vip-entry.active { color: #f6d77b; background: #211b13; }
+.square-page .home-vip-entry:active { transform: scale(.96); }
+@keyframes home-back-to-top-in { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+@media (prefers-reduced-motion: reduce) { .square-page .media-image-loading { animation: none; } }
+.home-highlight-error { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 12px; background: #191919; font-family: Arial, Helvetica, sans-serif; font-size: 13px; }
+.home-highlight-error button { min-height: 44px; border: 0; border-radius: 8px; padding: 0 14px; background: #fff; color: #111; }
+/* 首次加载直接保留轮播和热播结构，不展示无关启动页或虚构剧照。 */
+.home-loading-covers { display: flex; justify-content: center; align-items: center; overflow: hidden; margin: 0 -16px; }
+.home-loading-covers > span { flex: 0 0 58%; aspect-ratio: 3 / 4; border-radius: 14px; background: #191919; }
+.home-loading-covers > span:first-child, .home-loading-covers > span:last-child { transform: scale(.82); }
+.home-loading-dots { display: grid; place-items: center; height: 50px; }
+.home-loading-dots > span { width: 64px; height: 6px; border-radius: 99px; background: #242424; }
+.square-page .home-highlights-loading h2 { margin-top: 8px; }
+.home-loading-hot { display: flex; gap: 12px; overflow: hidden; margin-right: -16px; padding-right: 16px; }
+.home-loading-hot > div { flex: 0 0 34%; }
+.home-loading-hot span { display: block; aspect-ratio: 3 / 4; border-radius: 9px; background: #191919; }
+.home-loading-hot i { display: block; width: 80%; height: 14px; margin-top: 9px; border-radius: 4px; background: #191919; }
+.home-loading-tags { display: flex; gap: 8px; overflow: hidden; margin: 30px 0; }
+.home-loading-tags > span { flex: 0 0 28%; height: 34px; border-radius: 999px; background: #191919; }
+.square-page a:focus-visible, .square-page button:focus-visible { outline: 2px solid #fff; outline-offset: -3px; }
+
+/* 分类榜沿用参考图的竖封面与横向卡片；吸顶标签只在本分类区域内停留。 */
+.home-category-rankings { margin: 24px 0; }
+.home-category-rankings > h2 { margin: 0 0 2px; }
+.home-ranking-categories { position: sticky; top: max(44px, var(--minis-top, env(safe-area-inset-top))); z-index: 5; display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; margin: 0 -16px 12px; padding: 8px 16px 16px; background: #0b0b0b; }
+.home-ranking-categories button { flex-shrink: 0; min-height: 34px; padding: 7px 16px; border: 1px solid #363636; border-radius: 999px; background: transparent; color: #aaa; font: inherit; font-size: 14px; cursor: pointer; }
+.home-ranking-categories button[aria-pressed="true"] { background: #ff5c00; border-color: #ff5c00; color: #fff; font-weight: 700; }
+.home-ranking-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 12px; }
+.home-ranking-list li { min-width: 0; scroll-margin-top: calc(max(44px, var(--minis-top, env(safe-area-inset-top))) + 74px); }
+.home-ranking-card { position: relative; isolation: isolate; display: flex; gap: 12px; min-width: 0; min-height: 168px; padding: 0 12px 12px; border-radius: 12px; color: #f5f5f5; }
+.home-ranking-card::before { content: ""; position: absolute; z-index: -1; inset: 16px 0 0; border-radius: 12px; background: #191919; }
+.home-ranking-card > img, .home-ranking-card > .media-image-placeholder { flex: 0 0 88px; width: 88px; height: 156px; object-fit: cover; border-radius: 8px; }
+.home-ranking-card .home-highlight-copy { display: flex; flex: 1; flex-direction: column; align-items: flex-start; min-width: 0; padding-top: 28px; }
+.home-ranking-card strong { display: -webkit-box; overflow: hidden; -webkit-line-clamp: 2; -webkit-box-orient: vertical; font-size: 14px; line-height: 1.35; overflow-wrap: anywhere; }
+.home-ranking-description { display: -webkit-box; overflow: hidden; margin: 6px 0 12px; color: #aaa; font-family: Arial, Helvetica, sans-serif; font-size: 12px; line-height: 1.4; text-wrap: pretty; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow-wrap: anywhere; }
+.home-ranking-play { display: inline-flex; align-items: center; justify-content: center; gap: 6px; min-width: 78px; min-height: 32px; margin-top: auto; padding: 6px 14px; border-radius: 999px; color: #080808; background: #fff; font-family: Arial, Helvetica, sans-serif; font-size: 14px; font-weight: 700; }

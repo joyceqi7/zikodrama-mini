@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7690515284835108871",
+  "name": "Episora",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/286623adff5649f0adf0ad8b8b418bf9~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1790676836&x-signature=bfwY0oCBrrZBJrMzjZ4U2R4oRNc%3D",
+  "clientKey": "mno2cm710dgyld78",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7685989013308475410",
+  "name": "Bingelet",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/abe7d7ce5d65402ce8becf52c463816d~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1789631329&x-signature=5yBuHsgA5tIxwN%2Bq27dqnDYM7DU%3D",
+  "clientKey": "mnscen778tdn1et4",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

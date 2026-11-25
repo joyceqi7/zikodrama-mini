@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7690377460546603026",
+  "name": "ClipSaga",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/e5b00901e8763850841c6b6f855f55dd~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1790654753&x-signature=wN2v9eTrLQJ75Kf%2BjG5We0YgS%2B4%3D",
+  "clientKey": "mne5xme48rnnhedk",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7694137787536181256",
+  "name": "Glimora",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/f5328a7bb9158b55f16dcd3d54e59787~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1791527624&x-signature=JpG9uVR0QJFYeaKJ0cqx5pXlAJg%3D",
+  "clientKey": "mn23su3q2uw0yt3p",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "navbar": {
+    "bgColorLight": "#0b0b0d",
+    "bgColorDark": "#0b0b0d",
+    "style": "custom"
+  },
+  "dev": {
+    "host": "localhost",
+    "port": 5173
+  },
+  "build": {
+    "outputDir": "dist",
+    "htmlEntry": "index.html"
+  },
+  "domain": {
+    "trustedDomains": [
+      "https://img.tkdrama.site",
+      "https://sf16-vod-license-multi.byteplusvod.com",
+      "https://sf19-vod-license-multi.byteplusvod.com"
+    ]
+  }
+}

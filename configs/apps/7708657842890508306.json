@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7708657842890508306",
+  "name": "Fablet",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/be4459b5f7b073a7aacc1c9efb59642d~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1794905332&x-signature=NGa98Gn8RoHFMSG9njeByPxh84o%3D",
+  "clientKey": "mnogfxtfc3yoohny",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

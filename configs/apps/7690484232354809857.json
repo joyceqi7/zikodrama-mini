@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7690484232354809857",
+  "name": "Brevio",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/09baa85131dd1e4e5f88c41034cf02bf~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1790675843&x-signature=BcV%2FTcNZ0gQhAg3rh%2FzY9csQR4o%3D",
+  "clientKey": "mnp6d26vu9n16f3n",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

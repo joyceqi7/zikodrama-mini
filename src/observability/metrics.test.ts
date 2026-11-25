@@ -1,0 +1,80 @@
+import { afterEach, expect, test, vi } from "vitest";
+import { MetricCollector, type MetricEvent } from "./metrics";
+import type { PostbackDetails } from "./postback";
+
+afterEach(() => { vi.useRealTimers(); vi.restoreAllMocks(); });
+
+test("重试保留脱敏参数、原事实时间和 ID；未知可由迟到成功补充，换号丢弃旧结果", async () => {
+  vi.useFakeTimers();
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  const batches: MetricEvent[][] = [];
+  let offline = false;
+  const collector = new MetricCollector(async events => { batches.push(JSON.parse(JSON.stringify(events))); if (offline) throw new Error("offline"); });
+  collector.identify("A");
+  await collector.flush();
+  batches.length = 0;
+  const detail: PostbackDetails = { scene: "entry_reward", clientVersion: "build-42", params: { open_id: "[REDACTED]", if_last_ep: null }, warnings: ["missing_previous_episode"] };
+  const occurredAt = "2026-10-20T01:02:03.000Z";
+  collector.recordTikTokPostback("event-1234567890123", "minis_ad_show", "attempt", detail, occurredAt);
+  detail.params.open_id = "mutated";
+  offline = true;
+  await collector.flush();
+  offline = false;
+  await collector.flush();
+  expect(batches[0]).toEqual(batches[1]);
+  expect(batches[0][0]).toMatchObject({ id: "event-1234567890123", occurredAt, postback: { params: { open_id: "[REDACTED]" } } });
+  collector.recordTikTokPostback("event-1234567890123", "minis_ad_show", "unknown", undefined, occurredAt);
+  collector.recordTikTokPostback("event-1234567890123", "minis_ad_show", "success", undefined, occurredAt);
+  await collector.flush();
+  expect(batches.at(-1)?.map(event => event.kind)).toEqual(["tt_ad_show_unknown", "tt_ad_show_success"]);
+  collector.recordTikTokPostback("old-event-123456789", "ep_play", "attempt");
+  collector.identify("B");
+  collector.recordTikTokPostback("old-event-123456789", "ep_play", "success");
+  collector.recordTikTokPostback("skipped-event-123456", "ep_play", "skipped");
+  await collector.flush();
+  expect(batches.at(-1)?.map(event => event.kind)).toEqual(["launch", "active", "tt_episode_play_skipped"]);
+  collector.dispose();
+});
+
+test("广告采集复用调用键及原时间，阶段重复和跨主体迟到结果不能增加计数", async () => {
+  vi.useFakeTimers();
+  const batches: MetricEvent[][] = [];
+  const collector = new MetricCollector(async events => { batches.push(events); });
+  collector.identify("A"); await collector.flush(); batches.length = 0;
+  const observe = collector.captureAd({ adType: "rewarded", adUnitId: "slot-1", scene: "entry_reward", clientVersion: "build-42", os: "unknown", tiktokVersion: "unknown" }, "ad-call-1234567890");
+  observe({ kind: "ad_request", stage: "show" });
+  vi.advanceTimersByTime(50);
+  observe({ kind: "ad_shown", stage: "show", evidence: "show_promise", showElapsedMs: 50 });
+  observe({ kind: "ad_shown", stage: "show", evidence: "completed_close", showElapsedMs: 60 });
+  await collector.flush();
+  expect(batches[0].map(event => event.kind)).toEqual(["ad_request", "ad_shown"]);
+  expect(new Set(batches[0].map(event => event.id)).size).toBe(1);
+  expect(new Set(batches[0].map(event => event.occurredAt)).size).toBe(1);
+  collector.identify("B"); observe({ kind: "ad_complete", stage: "close" }); await collector.flush();
+  expect(batches.at(-1)?.map(event => event.kind)).toEqual(["launch", "active"]);
+  collector.dispose();
+});
+
+test("统计只发送事件和错误码，失败现场在首次和重试批次都被排除", async () => {
+  vi.useFakeTimers();
+  vi.spyOn(console, "warn").mockImplementation(() => {});
+  const batches: MetricEvent[][] = [];
+  let offline = false;
+  const collector = new MetricCollector(async events => { batches.push(JSON.parse(JSON.stringify(events))); if (offline) throw new Error("offline"); });
+  collector.identify("A"); await collector.flush(); batches.length = 0;
+  const observe = collector.captureAd({ adType: "rewarded", adUnitId: "slot", scene: "entry_reward", clientVersion: "build", os: "ios", tiktokVersion: "46.1" });
+  const failure = { error: "container unavailable", errorDocument: "visible" as const, errorNative: "unknown" as const, errorPrerender: false, shown: false, userInitiated: false };
+  observe({ kind: "ad_request", stage: "show", failure });
+  observe({ kind: "ad_failure", stage: "show", errorCode: "101150000", innerErrorCode: "50008", failure });
+  observe({ kind: "ad_failure", stage: "callback", failure });
+  failure.error = "changed after queueing";
+  offline = true; await collector.flush();
+  offline = false; await collector.flush();
+  expect(batches[0]).toEqual(batches[1]);
+  expect(batches[0].map(event => event.kind)).toEqual(["ad_request", "ad_failure"]);
+  expect(JSON.stringify(batches)).not.toContain("adFailure");
+  expect(JSON.stringify(batches)).not.toContain("container unavailable");
+  expect(batches[0][1]).toMatchObject({ id: observe.attemptId, ad: { errorCode: "101150000", innerErrorCode: "50008" } });
+  expect(batches[0].every(event => !("failure" in event.ad!) && !("diagnostics" in event.ad!))).toBe(true);
+  collector.dispose();
+});

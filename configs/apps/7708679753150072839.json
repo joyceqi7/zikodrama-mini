@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7708679753150072839",
+  "name": "Reelwish",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/ec70098e7d8f8342f51d1499dd978999~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1794905553&x-signature=rympQkoHUa1rzcmPVN6y96qwuII%3D",
+  "clientKey": "mn4xumj3ljvu8s92",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

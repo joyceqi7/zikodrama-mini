@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7708679395992438792",
+  "name": "Taleory",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/66865015795d8a3db52cfeeede17df96~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1794905507&x-signature=JO93%2F0tYMclGe3dlfP0L6PjRKcM%3D",
+  "clientKey": "mn9crhq78hyck009",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

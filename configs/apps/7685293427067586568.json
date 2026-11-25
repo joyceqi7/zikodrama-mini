@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7685293427067586568",
+  "name": "Plotimo",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/f82a4fca27926be162dce41436778f45~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1789544013&x-signature=0zECW3ptIctBnkFI9u0Xq6B8tp0%3D",
+  "clientKey": "mnkknp3mfx597qbx",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

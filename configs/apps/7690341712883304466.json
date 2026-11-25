@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7690341712883304466",
+  "name": "NextScene",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/ef83f4cec55385432f74a6112db79624~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1790655445&x-signature=BpFvJf7DMDhv7cjPRAQLFRxoG0g%3D",
+  "clientKey": "mnda0i3k48dqlizv",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

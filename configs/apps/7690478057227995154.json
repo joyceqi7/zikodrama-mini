@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7690478057227995154",
+  "name": "Kinoza",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/c4cdf1940298903a62cb6e749e5d4f6f~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1790676438&x-signature=aympjT518luaqHqlmrEpAa2h8zA%3D",
+  "clientKey": "mnyx0ri2rrxgnbsw",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

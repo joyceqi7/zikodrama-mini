@@ -1,0 +1,23 @@
+factory_version: "0.5"
+project:
+  id: drama-mini
+  product: Drama TikTok Minis
+  kind: React TikTok Minis H5 client
+context:
+  current_state: CONTEXT.md
+  instructions: AGENTS.md
+orchestration:
+  workspace: ../.factory/workspace.yaml
+commands:
+  test: make test
+  build: make build
+  verify: make verify
+risk:
+  public_api: true
+  data_migrations: false
+  production_data: false
+  external_side_effects: true
+authority:
+  local_changes: allowed
+  external_writes: prohibited
+  production_release: confirmation_required

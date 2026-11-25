@@ -1,0 +1,50 @@
+{
+  "name": "drama-mini",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0",
+    "dev:minis": "node scripts/dev-minis.mjs",
+    "build:web": "tsc -b && vite build",
+    "build": "node scripts/package-minis.mjs",
+    "package:all": "node scripts/package-minis.mjs --all",
+    "package:ad-diagnostics": "node scripts/package-ad-diagnostics.mjs",
+    "typecheck": "tsc -b --pretty false",
+    "test": "vitest run && node --test tests/*.node.mjs",
+    "fixtures:local": "node scripts/prepare-local-catalog.mjs",
+    "test:watch": "vitest"
+  },
+  "dependencies": {
+    "@byteplus/veplayer": "1.19.1",
+    "@phosphor-icons/react": "^2.1.10",
+    "lucide-react": "^0.468.0",
+    "react": "^19.2.0",
+    "react-dom": "^19.2.0",
+    "react-router-dom": "^7.9.6",
+    "swiper": "^11.1.1"
+  },
+  "devDependencies": {
+    "@inquirer/select": "^5.2.5",
+    "@testing-library/jest-dom": "^6.6.3",
+    "@testing-library/react": "^16.1.0",
+    "@types/react": "^19.0.6",
+    "@types/react-dom": "^19.0.2",
+    "@vitejs/plugin-react": "^5.1.1",
+    "jsdom": "^25.0.1",
+    "tiktok-minis-cli": "0.0.7",
+    "typescript": "~5.9.3",
+    "vite": "^7.2.5",
+    "vitest": "^3.2.4"
+  },
+  "overrides": {
+    "body-parser": "1.20.4",
+    "cookie": "0.7.2",
+    "express": "4.22.1",
+    "glob@11.0.3": "11.1.0",
+    "handlebars": "4.7.9",
+    "path-to-regexp": "0.1.13",
+    "qs": "6.15.3",
+    "send": "0.19.1"
+  }
+}

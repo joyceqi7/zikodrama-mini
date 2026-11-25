@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en"><head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Sandbox Ad Diagnostics</title>
+  <script data-tiktok-sdk="true" src="https://connect.tiktok-minis.com/drama/sdk.js" onload="this.dataset.loaded='true'" onerror="this.dataset.failed='true'"></script>
+  <script>
+    window.__TIKTOK_MINIS_INITIALIZE__ = async function () {
+      if (window.__TIKTOK_MINIS_INITIALIZED__) return;
+      await TTMinis.init({ clientKey: "%VITE_TIKTOK_CLIENT_KEY%" });
+      window.__TIKTOK_MINIS_INITIALIZED__ = true;
+    };
+  </script>
+  <style>
+    :root{font:15px system-ui;color:#f5f5f5;background:#0b0b0d;color-scheme:dark}*{box-sizing:border-box}body{margin:0;padding:110px 18px 40px}h1{font-size:25px;margin:6px 0}h2{font-size:18px}p{line-height:1.55;color:#c6c6c9}.tag{color:#ff8b45;font-size:12px;font-weight:800;letter-spacing:.08em}.card{background:#19191d;border:1px solid #34343b;border-radius:16px;padding:16px;margin:14px 0}button,select,input{width:100%;min-height:46px;margin:6px 0;padding:10px;border:1px solid #555;border-radius:10px;font:inherit}button{background:#ff710b;border:0;color:white;font-weight:700}button.secondary{background:#35353c}button:disabled{opacity:.35}label{display:block;color:#ddd;margin-top:12px}.row{display:flex;gap:12px}.row>*{flex:1;min-width:0}code{overflow-wrap:anywhere;font-size:12px}.status{white-space:pre-line;color:#f5f5f5}textarea{width:100%;height:220px;font:11px monospace;padding:10px;background:#101013;color:#ddd}#events{white-space:pre-wrap;overflow-wrap:anywhere;font:12px/1.6 monospace;max-height:350px;overflow:auto}.note{font-size:12px;color:#aaa}.error{color:#ff8a8a}
+  </style>
+</head><body>
+  <span class="tag">SANDBOX · REAL TIKTOK SDK</span><h1>Ad diagnostics</h1>
+  <p>Operator test package. No player, automatic ads, unlocks, rewards or business postbacks.</p>
+  <section class="card"><h2>1. Connect test service</h2><p id="identity" class="status">Not connected</p><button id="connect">Connect with TikTok</button>
+    <label>Drama used to read an available rewarded offer<select id="drama"></select></label><button id="read-slot" class="secondary" disabled>Read ad slots from test API</button><p id="slots" class="note"></p>
+  </section>
+  <section class="card"><h2>2. Select a controlled test</h2>
+    <label>Ad type<select id="kind"><option value="rewarded">Rewarded</option><option value="interstitial">Interstitial</option></select></label>
+    <div class="row"><label>Max creates (1–20)<input id="count" type="number" min="1" max="20" value="20" /></label><label>Interval, ms<input id="interval" type="number" min="0" max="10000" value="200" /></label></div>
+    <button id="burst" disabled>Create only · stop on error</button><p class="note">No show calls. Instance returned does not confirm ad loading. Late errors retain their original attempt number. After this test, close and reopen the Mini before any further test.</p>
+    <button id="probe" class="secondary" disabled>Probe last instance via show()</button><p class="note">No new create call. The SDK can forward an initialization failure through show(). If initialization succeeded, one native ad may open. A global rejection has no reliable instance ID and is recorded as unattributed.</p>
+    <button id="show" class="secondary" disabled>Create and show once</button><p class="note">One request per tap. Close the native ad manually; no automatic next ad. No reward is claimed, even if isEnded is true.</p>
+    <button id="stop" class="secondary" disabled>Stop scheduling more creates</button><p id="status" class="status">Ready to connect</p>
+  </section>
+  <section class="card"><h2>3. Evidence</h2><p id="summary">No requests</p><div id="events"></div><button id="export" class="secondary">Prepare sanitized JSON</button><textarea id="json" readonly aria-label="Sanitized test log"></textarea></section>
+  <script type="module" src="/adPage.ts"></script>
+</body></html>

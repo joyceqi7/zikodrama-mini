@@ -1,0 +1,25 @@
+{
+  "domains": [
+    {
+      "domain": "tiktok-minis.us",
+      "appId": "1072774",
+      "licenseFile": "l-20322334481-ch-vod-a-1072774.lic"
+    },
+    {
+      "domain": "tiktokminis.us",
+      "appId": "1073274",
+      "licenseFile": "l-15729717777-ch-vod-a-1073274.lic"
+    },
+    {
+      "domain": "tiktok-minis.eu",
+      "appId": "1073276",
+      "licenseFile": "l-15729719569-ch-vod-a-1073276.lic"
+    },
+    {
+      "domain": "tiktok-minis.com",
+      "appId": "1073277",
+      "licenseFile": "l-16620622609-ch-vod-a-1073277.lic"
+    }
+  ],
+  "localDebugDomain": "tiktok-minis.us"
+}

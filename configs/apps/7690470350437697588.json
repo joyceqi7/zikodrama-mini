@@ -1,0 +1,14 @@
+{
+  "tiktokAppId": "7690470350437697588",
+  "name": "Flicklet",
+  "logoUrl": "https://p16-tt4dportal-sign-sg.tiktokcdn.com/tos-alisg-i-tt4dportal-sg/6f5551e6d87e0cb699f0679eee93c444~tplv-tt4dportal-image.image?rk3s=d27144ec&x-expires=1790676209&x-signature=1lRxwO39oh2ZJBQKwB%2FKKFlQpuc%3D",
+  "clientKey": "mn83oi4ggal9z1lp",
+  "deployments": {
+    "sandbox": {
+      "apiBaseUrl": "https://testservice.tkdrama.site"
+    },
+    "production": {
+      "apiBaseUrl": "https://service.tkdrama.site"
+    }
+  }
+}

@@ -1,0 +1,24 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+!.env.development
+node_modules/
+dist/
+coverage/
+previewPage/
+*.tsbuildinfo
+*.log
+minis.zip
+public/licenses/*.lic
+configs/apps/*.local.json
+.playwright-cli/
+output/
+.artifacts/
+.idea
+
+# 公开开发配置纳入版本管理；私钥文件不进入仓库。
+*.pem
+*.key
+*.p12
+*.pfx
