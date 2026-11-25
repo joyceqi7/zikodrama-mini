@@ -1,12 +1,9 @@
 {
   "tiktokAppId": "7711998244120807442",
   "name": "ZikoDrama-TV",
-  "logoUrl": "",
+  "logoUrl": "https://zikodrama-tv.com/logo.png",
   "clientKey": "mnbi4ximrm1865hz",
   "deployments": {
-    "sandbox": {
-      "apiBaseUrl": "https://api.zikodrama-tv.com"
-    },
     "production": {
       "apiBaseUrl": "https://api.zikodrama-tv.com"
     }

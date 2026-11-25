@@ -279,10 +279,15 @@ async function loadBuildEnvironment(root) {
 
 function run(command, args, cwd, environment = process.env) {
   return new Promise((resolveRun, reject) => {
-    const child = spawn(command, args, {
+    // Windows 上 npm 与 node_modules/.bin 下的 CLI 是 .cmd 脚本，Node 须经 shell 启动；PowerShell 压缩仍直接启动。
+    const viaShell = process.platform === "win32" && !/powershell(\.exe)?$/i.test(command);
+    // 只给含空格的路径加引号：裸命令加引号会让 npm.cmd 把当前目录误当作自身所在目录。
+    const shellCommand = viaShell && /\s/.test(command) ? `"${command}"` : command;
+    const child = spawn(shellCommand, args, {
       cwd,
       stdio: "inherit",
       env: environment,
+      shell: viaShell,
     });
     child.once("error", reject);
     child.once("exit", (code, signal) => {
