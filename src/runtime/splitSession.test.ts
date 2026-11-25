@@ -55,7 +55,7 @@ it.each(["ready", "missing", "pending"] as const)("投放并行准备目标，�
 
   const preparationResult = json({
     target: { dramaId: "36", episodeId: "384" }, title: "Published drama",
-    coverUrl: "https://img.tkdrama.site/covers/36.jpg", episodeNumber: 1, episodeCount: 10,
+    coverUrl: "https://img.zikodrama-tv.com/covers/36.jpg", episodeNumber: 1, episodeCount: 10,
   });
   if (preparation === "ready") preparationPending.release(preparationResult);
   if (preparation === "missing") preparationPending.release(new Response("404 page not found", { status: 404 }));

@@ -9,7 +9,7 @@ import { buildMinisConfig, loadApplicationProfile, profileEnvironment } from "./
 const root = process.cwd();
 const app = await selectApplication({ root, appId: argumentValue(process.argv, "--app"), action: "广告诊断打包", interactive: false });
 const env = profileEnvironment(await loadApplicationProfile(root, app.tiktokAppId), "sandbox");
-if (env.VITE_API_BASE_URL !== "https://testservice.tkdrama.site") throw new Error("Ad diagnostics must use the test service");
+if (env.VITE_API_BASE_URL !== "https://api.zikodrama-tv.com") throw new Error("Ad diagnostics must use the test service");
 const revision = execFileSync("git", ["rev-parse", "--short=12", "HEAD"], { cwd: root, encoding: "utf8" }).trim();
 const config = { tiktokAppId: app.tiktokAppId, name: app.name, apiBaseUrl: env.VITE_API_BASE_URL, build: `${revision}-ad-diag-2` };
 const output = resolve(root, ".artifacts", "ad-diagnostics", app.tiktokAppId);

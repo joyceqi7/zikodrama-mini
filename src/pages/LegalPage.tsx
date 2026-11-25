@@ -3,8 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { currentApplicationProfile } from "../config/applicationProfile";
 
-const email = "zhangyujia@haoxin8.cn";
-const legalEntity = "IGNITE GAMES PTY LTD";
+const email = "support@zikodrama-tv.com";
+const legalEntity = "SAILSON PTE LTD";
 
 function Contact() {
   return <a href={`mailto:${email}`}>{email}</a>;

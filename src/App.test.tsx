@@ -14,7 +14,7 @@ import { coverLoader } from "./components/coverLoader";
 import * as theaterModule from "./runtime/theaterModule";
 import { startApplication } from "./runtime/startup";
 
-const mediaPreconnect = 'link[rel="preconnect"][href="https://vod.tkdrama.site"]';
+const mediaPreconnect = 'link[rel="preconnect"][href="https://vod.zikodrama-tv.com"]';
 
 // 手动通知列表底部可见，验证自动翻页而不依赖 jsdom 的布局能力。
 function observeCatalogBottom() {
@@ -502,7 +502,7 @@ it("投放目标确认无效后才展示首页，保留已有的无目标落地�
   runtime.loadPublicCatalog = vi.fn(async () => ({ dramas: [drama] }));
 
   const view = render(<App runtime={runtime} />);
-  expect(view.container.querySelector(".playback-launch-preview img")).toHaveAttribute("src", "https://img.tkdrama.site/covers/main.jpg");
+  expect(view.container.querySelector(".playback-launch-preview img")).toHaveAttribute("src", "https://img.zikodrama-tv.com/covers/main.jpg");
   expect(screen.getByText("Early preview")).toBeInTheDocument();
   expect(screen.getByText("Episode 1 of 20")).toBeInTheDocument();
   expect(runtime.loadPublicCatalog).not.toHaveBeenCalled();

@@ -13,5 +13,5 @@ test("本机开发使用 HTTPS 测试 API，避免浏览器拦截 HTTP IP 直连
   assert.ok(apiBaseUrl, "VITE_API_BASE_URL is required");
   const url = new URL(apiBaseUrl);
   assert.equal(url.protocol, "https:");
-  assert.equal(url.hostname, "testservice.tkdrama.site");
+  assert.equal(url.hostname, "api.zikodrama-tv.com");
 });

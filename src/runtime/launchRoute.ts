@@ -3,7 +3,7 @@ function isRootLaunch(hash: string): boolean {
 }
 
 /** campaignCoverOrigin 用于校验投放入口提前读取封面的公开 CDN。 */
-export const campaignCoverOrigin = "https://img.tkdrama.site";
+export const campaignCoverOrigin = "https://img.zikodrama-tv.com";
 const coverParameters = [
   "coverDramaId", "coverEpisodeId", "coverKey", "coverTitle", "coverEpisodeNumber", "coverEpisodeCount",
   "platformDramaId", "platformEpisodeId",

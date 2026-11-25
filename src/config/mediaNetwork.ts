@@ -1,5 +1,5 @@
 /** mediaCDNOrigin 是播放入口预连接的媒体 CDN HTTPS 地址。 */
-export const mediaCDNOrigin = "https://vod.tkdrama.site";
+export const mediaCDNOrigin = "https://vod.zikodrama-tv.com";
 
 function preconnect(origin: string): void {
   if (document.head.querySelector(`link[rel="preconnect"][href="${origin}"]`)) return;

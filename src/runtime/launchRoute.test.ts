@@ -42,7 +42,7 @@ it("二维码预览沿用深链封面提示，目标标识保持字符串", () =
     platformDramaId: "official-drama", platformEpisodeId: "official-episode", episodeId: "ignored",
   }).toString());
   expect(readCampaignCover("", window.location.search)).toEqual({
-    dramaId: "9007199254740993", episodeId: "18426", url: "https://img.tkdrama.site/covers/main.jpg",
+    dramaId: "9007199254740993", episodeId: "18426", url: "https://img.zikodrama-tv.com/covers/main.jpg",
     title: "Vengeance Of The Duke", episodeNumber: "1", episodeCount: "20",
   });
   expect(readCampaignCover("#/profile", window.location.search)).toBeUndefined();

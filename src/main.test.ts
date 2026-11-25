@@ -126,7 +126,7 @@ it("投放封面在启动身份前插入，登录与播放器准备随后照常�
   const { prepareInitialAppConfig } = await import("./runtime/initialAppConfig");
   vi.mocked(prepareInitialAppConfig).mockImplementationOnce(() => {
     const image = document.querySelector("img[data-campaign-entry-cover]")!;
-    expect(image).toHaveAttribute("src", "https://img.tkdrama.site/covers/main.jpg");
+    expect(image).toHaveAttribute("src", "https://img.zikodrama-tv.com/covers/main.jpg");
     expect(image.parentElement).toHaveAttribute("hidden");
     fireEvent.load(image);
     expect(image.parentElement).not.toHaveAttribute("hidden");

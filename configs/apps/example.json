@@ -1,14 +1,14 @@
 {
   "tiktokAppId": "replace_with_tiktok_app_id",
   "name": "Example Drama",
-  "logoUrl": "https://cdn.your-domain.example/example-drama-logo.png",
+  "logoUrl": "https://img.zikodrama-tv.com/brand/example-drama-logo.png",
   "clientKey": "replace_with_tiktok_client_key",
   "deployments": {
     "sandbox": {
-      "apiBaseUrl": "https://api.staging.your-domain.example"
+      "apiBaseUrl": "https://api.zikodrama-tv.com"
     },
     "production": {
-      "apiBaseUrl": "https://api.your-domain.example"
+      "apiBaseUrl": "https://api.zikodrama-tv.com"
     }
   }
 }
