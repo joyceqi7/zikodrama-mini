@@ -2,9 +2,7 @@ import { ArrowLeft } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { currentApplicationProfile } from "../config/applicationProfile";
-
-const email = "support@zikodrama-tv.com";
-const legalEntity = "SAILSON PTE LTD";
+import { governingLaw, legalEntity, supportEmail as email } from "../config/brand";
 
 function Contact() {
   return <a href={`mailto:${email}`}>{email}</a>;
@@ -152,7 +150,7 @@ export function AgreementPage() {
       <p className="legal-emphasis">The Service is provided “as is” and “as available,” without warranties of any kind to the maximum extent permitted by law. To that extent, {appName} is not liable for indirect, incidental, special, consequential, or punitive damages, or loss of data, use, or goodwill arising from the Service.</p>
 
       <h2>9. Governing Law</h2>
-      <p>These Terms are governed by the laws of Singapore.</p>
+      <p>These Terms are governed by the laws of {governingLaw}.</p>
 
       <h2>10. Contact Us</h2>
       <ul><li>Email: <Contact /></li><li>Company: <strong>{legalEntity}</strong></li></ul>

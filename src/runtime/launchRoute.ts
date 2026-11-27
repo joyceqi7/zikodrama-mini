@@ -1,9 +1,11 @@
+import { imageCDNOrigin } from "../config/brand";
+
 function isRootLaunch(hash: string): boolean {
   return !hash || hash === "#" || hash === "#/" || hash === "/";
 }
 
-/** campaignCoverOrigin 用于校验投放入口提前读取封面的公开 CDN。 */
-export const campaignCoverOrigin = "https://img.zikodrama-tv.com";
+/** campaignCoverOrigin 用于校验投放入口提前读取封面的公开 CDN，按应用包配置。 */
+export const campaignCoverOrigin = imageCDNOrigin;
 const coverParameters = [
   "coverDramaId", "coverEpisodeId", "coverKey", "coverTitle", "coverEpisodeNumber", "coverEpisodeCount",
   "platformDramaId", "platformEpisodeId",

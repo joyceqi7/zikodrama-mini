@@ -1,0 +1,16 @@
+{
+  "tiktokAppId": "7712699439152105479",
+  "name": "ZikoShorts",
+  "logoUrl": "https://zikoshorts.com/logo.png",
+  "clientKey": "mntnc229tb429ksh",
+  "legalEntity": "HONG KONG SCEP BIOTECHNOLOGY LIMITED",
+  "supportEmail": "support@zikoshorts.com",
+  "governingLaw": "the Hong Kong Special Administrative Region",
+  "mediaCdnOrigin": "https://vod.zikoshorts.com",
+  "imageCdnOrigin": "https://img.zikoshorts.com",
+  "deployments": {
+    "production": {
+      "apiBaseUrl": "https://api.zikoshorts.com"
+    }
+  }
+}

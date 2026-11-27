@@ -234,7 +234,30 @@ export function profileEnvironment(profile, requestedTarget = "production") {
       "apiBaseUrl",
       configuredProfile?.apiBaseUrl,
     ),
+    // 可选的品牌与合规字段：多个小程序共用代码时，各自的法律主体与 BytePlus CDN 域名可能不同；
+    // 未填写时客户端沿用 src/config/brand.ts 的默认值。
+    ...optionalProfileText("VITE_LEGAL_ENTITY", "legalEntity", profile?.legalEntity),
+    ...optionalProfileText("VITE_SUPPORT_EMAIL", "supportEmail", profile?.supportEmail),
+    ...optionalProfileText("VITE_GOVERNING_LAW", "governingLaw", profile?.governingLaw),
+    ...optionalProfileOrigin("VITE_MEDIA_CDN_ORIGIN", "mediaCdnOrigin", profile?.mediaCdnOrigin),
+    ...optionalProfileOrigin("VITE_IMAGE_CDN_ORIGIN", "imageCdnOrigin", profile?.imageCdnOrigin),
   };
+}
+
+/** optionalProfileText 校验可选的公开文本字段，未配置时不注入环境变量。 */
+function optionalProfileText(variable, field, input) {
+  if (input === undefined) return {};
+  if (typeof input !== "string" || !input.trim() || input.length > 200) throw new Error(`${field} must be a non-empty string`);
+  return { [variable]: input.trim() };
+}
+
+/** optionalProfileOrigin 校验可选的 CDN 地址只能是不带路径的 HTTPS Origin。 */
+function optionalProfileOrigin(variable, field, input) {
+  if (input === undefined) return {};
+  let url;
+  try { url = new URL(input); } catch { throw new Error(`${field} must be an HTTPS origin`); }
+  if (url.protocol !== "https:" || url.origin !== input) throw new Error(`${field} must be an HTTPS origin such as https://img.example.com`);
+  return { [variable]: url.origin };
 }
 
 export async function loadApplicationProfile(root, applicationId) {
